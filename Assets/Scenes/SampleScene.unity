@@ -261,7 +261,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   proyectilPrefab: {fileID: 2567298222431708155, guid: d2af936814a8168469784a82a67809f7, type: 3}
-  fuerzaDisparo: 20
+  fuerzaDisparo: 30
+  tiempoDeVida: 4
 --- !u!114 &61345747
 MonoBehaviour:
   m_ObjectHideFlags: 0
