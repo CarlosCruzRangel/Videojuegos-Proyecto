@@ -34,8 +34,6 @@ public class Gloop : MonoBehaviour
             //Si no ha cambiado de posicion incrementamos el contador
             timeSinceLastMove += Time.deltaTime;
         }
-        Debug.Log("Ball " + (timeSinceLastMove > .25));
-        Debug.Log("Sling " + slingScript.isMoving);
         // Si no se ha movido en los últimos .25 segundos consideramos que ya no se moverá
         if ((timeSinceLastMove > .25) && !slingScript.isMoving){
             resetSlingPoint();

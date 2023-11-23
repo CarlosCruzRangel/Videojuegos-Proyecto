@@ -44,7 +44,7 @@ public class Sling : MonoBehaviour
             timeSinceLastMove += Time.deltaTime;
         }
 
-        if(timeSinceLastMove > .05f){
+        if(timeSinceLastMove > 2f){
             isMoving = false;
         }else{
             isMoving = true;
@@ -86,11 +86,6 @@ public class Sling : MonoBehaviour
     private IEnumerator Release(){
         yield return new  WaitForSeconds(releaseDelay);
         spring.enabled = false;
-    }
-
-    public bool isStill(){
-        Debug.Log(this.isMoving);
-        return !this.isMoving;
     }
 
 }
