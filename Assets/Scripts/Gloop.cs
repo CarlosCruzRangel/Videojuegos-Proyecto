@@ -42,7 +42,8 @@ public class Gloop : MonoBehaviour
 
     //Rutina que se invoca cuando gloop está quieto, resetea la posición del punto de lanzamiento sobre glowlux
     private void resetSlingPoint(){
-        sling.transform.position = currentPosition;
+        Vector3 newSlingPosition = new Vector3(transform.position.x, transform.position.y, 0f);
+        sling.transform.position = newSlingPosition;
         spring.enabled = true;
     }
 }
