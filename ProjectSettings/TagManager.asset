@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - Sling
+  - Wall
   layers:
   - Default
   - TransparentFX
