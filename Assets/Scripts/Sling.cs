@@ -12,16 +12,44 @@ public class Sling : MonoBehaviour
     private SpringJoint2D spring;
     private float releaseDelay;
     public float maxDistance = 2f;
+    public bool isStationary;
+    private Vector2 lastPosition;
+    private float timeSinceLastMove;
+    private Vector2 currentPosition;
+    public bool isMoving;
 
     private void Awake(){
+        isStationary = false;
         gloopario = GameObject.FindWithTag("Player");
         rb = GetComponent<Rigidbody2D>();
         spring = GetComponent<SpringJoint2D>();
         glooparioRB = gloopario.GetComponent<Rigidbody2D>();
         releaseDelay = 1 / (spring.frequency * 10);
+        lastPosition = transform.position;
+        timeSinceLastMove = 0f;
+        isMoving = true;
     }
     void Update()
     {
+        currentPosition = new Vector2(transform.position.x, transform.position.y);
+        if (lastPosition != currentPosition)
+        {
+            //Si sí cambió de posición actualizamos su ultima posición y reseteamos el contador
+            lastPosition = currentPosition;
+            timeSinceLastMove = 0f;
+        }
+        else
+        {
+            //Si no ha cambiado de posicion incrementamos el contador
+            timeSinceLastMove += Time.deltaTime;
+        }
+
+        if(timeSinceLastMove > .05f){
+            isMoving = false;
+        }else{
+            isMoving = true;
+        }
+
         if(mouseIsPressed){
             moveSlingPoint();
         }
@@ -59,5 +87,11 @@ public class Sling : MonoBehaviour
         yield return new  WaitForSeconds(releaseDelay);
         spring.enabled = false;
     }
+
+    public bool isStill(){
+        Debug.Log(this.isMoving);
+        return !this.isMoving;
+    }
+
 }
 
