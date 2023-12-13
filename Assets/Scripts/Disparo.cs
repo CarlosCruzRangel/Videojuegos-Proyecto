@@ -6,25 +6,42 @@ public class Disparo : MonoBehaviour
 {
     public float velMov;
     public float tiempo;
+    Vector2 direction;
+    float angle;
 
     // Start is called before the first frame update
     void Start()
     {
         Destroy(this.gameObject, tiempo);
+        angle = Mathf.Deg2Rad * transform.rotation.eulerAngles.z;
+        direction = new Vector2(Mathf.Cos(angle), Mathf.Sin(angle));
     }
 
     // Update is called once per frame
     void Update()
     {
-        transform.Translate(Vector2.right*velMov*Time.deltaTime);
+        transform.Translate(direction*velMov*Time.deltaTime);
     }
 
-    // Comportamiento de colisión para el disparo de glowlux
+    // Comportamiento de colisiÃ³n para el disparo 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == "enemy")
+        switch (collision.gameObject.tag)
         {
-            Destroy(this.gameObject);
+            case "Enemy":
+                Destroy(this.gameObject);
+                Destroy(collision.gameObject);
+                break;
+            case "Wall":
+                Destroy(this.gameObject);
+                break;
+            case "Player":
+                Destroy(this.gameObject);
+                Destroy(collision.gameObject);
+                break;
+            default:
+                Destroy(this.gameObject);
+                break;
         }
     }
 }
