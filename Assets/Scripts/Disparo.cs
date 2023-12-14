@@ -24,24 +24,13 @@ public class Disparo : MonoBehaviour
     }
 
     // Comportamiento de colisión para el disparo 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        switch (collision.gameObject.tag)
-        {
-            case "Enemy":
-                Destroy(this.gameObject);
-                Destroy(collision.gameObject);
-                break;
-            case "Wall":
-                Destroy(this.gameObject);
-                break;
-            case "Player":
-                Destroy(this.gameObject);
-                Destroy(collision.gameObject);
-                break;
-            default:
-                Destroy(this.gameObject);
-                break;
+        Debug.Log("a");
+        if (collision.gameObject.tag == "Player"){
+            Destroy(collision.gameObject);
+            Destroy(this.gameObject);
+            Debug.Log("b");
         }
     }
 }
