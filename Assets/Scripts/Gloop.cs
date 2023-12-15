@@ -47,4 +47,11 @@ public class Gloop : MonoBehaviour
         sling.transform.position = newSlingPosition;
         spring.enabled = true;
     }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if(collision.gameObject.tag == "Enemy"){
+            Destroy(this.gameObject);
+        }
+    }
 }
