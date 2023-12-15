@@ -9,10 +9,12 @@ public class CrabPatrol : MonoBehaviour
     private bool direction;
     public float idleTime;
     private int isMoving;
+    public Animator anim;
 
     // Start is called before the first frame update
     void Start()
     {
+        anim = this.GetComponent<Animator>();
         isMoving = 1;
         direction = false;
     }
@@ -20,7 +22,7 @@ public class CrabPatrol : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(direction){
+        if (direction){
             transform.Translate(movementSpeed * Vector2.right * Time.deltaTime * isMoving);
         }
         else{
@@ -49,9 +51,11 @@ public class CrabPatrol : MonoBehaviour
     IEnumerator IdleForSeconds(){
 
         isMoving = 0;
+        anim.SetFloat("move", 0f);
         // Wait for x seconds
         yield return new WaitForSeconds(idleTime);
         isMoving = 1;
+        anim.SetFloat("move", 1f);
         rotate();
     }
 }
