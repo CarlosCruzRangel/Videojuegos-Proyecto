@@ -39,11 +39,19 @@ public class CrabPatrol : MonoBehaviour
                 break;
         }
     }
+
+    private void rotate(){
+        Vector3 scale = transform.localScale;
+        scale.x *= -1;
+        transform.localScale = scale; 
+    }
+
     IEnumerator IdleForSeconds(){
 
         isMoving = 0;
         // Wait for x seconds
         yield return new WaitForSeconds(idleTime);
         isMoving = 1;
+        rotate();
     }
 }
