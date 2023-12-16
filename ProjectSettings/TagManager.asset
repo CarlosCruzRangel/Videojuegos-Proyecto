@@ -8,6 +8,8 @@ TagManager:
   - Wall
   - Enemy
   - PatrolPoint
+  - PlatformPoint
+  - Trap
   layers:
   - Default
   - TransparentFX
