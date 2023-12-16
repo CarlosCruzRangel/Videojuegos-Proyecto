@@ -411,8 +411,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1210908345}
-        m_TargetAssemblyTypeName: Pausa, Assembly-CSharp
-        m_MethodName: OnContinueButtonClicked
+        m_TargetAssemblyTypeName: RetryGameOverManager, Assembly-CSharp
+        m_MethodName: RetryLevel
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -718,7 +718,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1210908339}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9f92833ab9b4c6b49bae12fa9dfb2e67, type: 3}
+  m_Script: {fileID: 11500000, guid: 6c0126036f5156a42b7148b463cbd92a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1728454516
@@ -941,7 +941,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: PLAY
+  m_text: REINTENTAR
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 125cb55b44b24c4393181402bc6200e6, type: 2}
   m_sharedMaterial: {fileID: 2100000, guid: 125cb55b44b24c4393181402bc6200e6, type: 2}

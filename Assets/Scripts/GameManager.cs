@@ -7,9 +7,13 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
     private bool isPaused = false;
+    public string nivelActual;
+    public int intentosRestantes = 3;
 
     private void Awake()
     {
+        this.nivelActual = SceneManager.GetActiveScene().name;
+
         if (Instance == null)
         {
             Instance = this;
@@ -59,5 +63,33 @@ public class GameManager : MonoBehaviour
     }
 
     // Otros métodos y lógica de juego aquí...
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Enemy"))
+        {
+            Debug.Log("Colisión con enemigo");
+
+            intentosRestantes--;
+
+            if (intentosRestantes > 0)
+            {
+
+                Debug.Log("Te quedan " + intentosRestantes + " intentos");
+                SceneManager.LoadScene("RetryGameOver");
+                Debug.Log("Cargando escena: " + nivelActual);
+            }
+            else
+            {
+                Debug.Log("Game Over");
+
+                Debug.Log("IntentoAntes" + intentosRestantes);
+                this.intentosRestantes = 3;
+                Debug.Log("IntentoDespues" + intentosRestantes);
+                SceneManager.LoadScene("GameOver");
+            }
+
+        }
+    }
 }
 

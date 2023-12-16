@@ -17,4 +17,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Pausa.unity
     guid: cf858a9372225fc4abf52c37e3dbc932
+  - enabled: 1
+    path: Assets/Scenes/GameOver.unity
+    guid: 5f197f0d7dba89a4cafb8ca3874c88e6
+  - enabled: 1
+    path: Assets/Scenes/RetryGameOver.unity
+    guid: e93bc727cd8af3d4f9ac160d1d39570a
   m_configObjects: {}
