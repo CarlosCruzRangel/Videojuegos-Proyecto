@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Portal : MonoBehaviour
 {
@@ -8,7 +9,10 @@ public class Portal : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player")
         {
-            Debug.Log("a");
+            int indiceEscenaActual = SceneManager.GetActiveScene().buildIndex;
+
+            // Carga la siguiente escena en función del índice actual
+            SceneManager.LoadScene(indiceEscenaActual + 1);
         }
     }
 }

@@ -8,10 +8,11 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance;
     private bool isPaused = false;
     public string nivelActual;
-    public int intentosRestantes = 3;
+    public int intentosRestantes;
 
     private void Awake()
     {
+        intentosRestantes = 3;
         this.nivelActual = SceneManager.GetActiveScene().name;
 
         if (Instance == null)
@@ -66,11 +67,11 @@ public class GameManager : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Enemy"))
+        if ((collision.gameObject.CompareTag("Enemy")) || (collision.gameObject.CompareTag("Spikes")))
         {
             Debug.Log("Colisión con enemigo");
 
-            intentosRestantes--;
+            this.intentosRestantes = intentosRestantes -1;
 
             if (intentosRestantes > 0)
             {
